@@ -18,15 +18,11 @@ try {
 }
 /* Don't change code above this line ******************************************/
 
-
-
 async function createNewIngredient(amount, recipeId, measurementUnitId, foodStuff) {
   // Use the create method of the Ingredient object to create a new object.
   //
   // Docs: https://sequelize.org/v5/manual/instances.html#creating-persistent-instances
 }
-
-
 
 /* Don't change code below this line ******************************************/
 module.exports = {
