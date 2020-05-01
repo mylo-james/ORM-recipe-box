@@ -90,7 +90,12 @@ async function deleteRecipe(id) {
   // Use the findByPk method of the Recipe object to get the object and, then,
   // destroy it. Or, use the Model.destroy({ ... where ... }) method that you
   // saw in the video.
-  //
+
+  await Instruction.destroy({ where: { recipeId: [id] } });
+  await Ingredient.destroy({ where: { recipeId: [id] } });
+  const recipe = await Recipe.destroy({ where: { id: [id] } });
+
+  return recipe;
   // Docs: https://sequelize.org/master/class/lib/model.js~Model.html#instance-method-destroy
 }
 
@@ -99,13 +104,16 @@ async function createNewRecipe(title) {
   // return it.
   //
   // Docs: https://sequelize.org/v5/manual/instances.html#creating-persistent-instances
+  const recipe = await Recipe.create({ title: title });
+  return recipe;
 }
 
 async function searchRecipes(term) {
   // Use the findAll method of the Recipe object to search for recipes with the
   // given term in its title
-  //
   // Docs: https://sequelize.org/v5/manual/querying.html
+  const recipe = await Recipe.findAll({ where: { title: { [Op.iLike]: term } } });
+  return recipe;
 }
 
 /* Don't change code below this line ******************************************/

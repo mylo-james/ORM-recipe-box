@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Ingredient.associate = function (models) {
     Ingredient.belongsTo(models.Recipe, { foreignKey: 'recipeId' });
-    Ingredient.belongsTo(models.MeasurementUnit, { foreign: 'measurementUnitId' });
+    Ingredient.belongsTo(models.MeasurementUnit, { foreignKey: 'measurementUnitId' });
   };
   return Ingredient;
 };
